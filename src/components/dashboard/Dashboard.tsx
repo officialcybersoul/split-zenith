@@ -12,12 +12,15 @@ import {
   ArrowUpRight,
   ArrowDownLeft,
   TrendingUp,
-  Download,
   DollarSign,
   UserPlus
 } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import AddExpenseModal from '@/components/modals/AddExpenseModal';
+import CreateGroupModal from '@/components/modals/CreateGroupModal';
+import AddFriendModal from '@/components/modals/AddFriendModal';
+import SettleBalanceModal from '@/components/modals/SettleBalanceModal';
 
 export default function Dashboard() {
   const [walletConnected] = useState(true);
@@ -103,41 +106,61 @@ export default function Dashboard() {
               </div>
               
               <div className="flex space-x-3">
-                <Button variant="default" className="gap-2">
-                  <Plus className="w-4 h-4" />
-                  Add Expense
-                </Button>
-                <Button variant="outline" className="gap-2">
-                  <Users className="w-4 h-4" />
-                  Create Group
-                </Button>
-                <Button variant="wallet" className="gap-2">
-                  <Wallet className="w-4 h-4" />
-                  Settle
-                </Button>
+                <AddExpenseModal
+                  trigger={
+                    <Button variant="default" className="gap-2">
+                      <Plus className="w-4 h-4" />
+                      Add Expense
+                    </Button>
+                  }
+                />
+                <CreateGroupModal
+                  trigger={
+                    <Button variant="outline" className="gap-2">
+                      <Users className="w-4 h-4" />
+                      Create Group
+                    </Button>
+                  }
+                />
+                <SettleBalanceModal
+                  trigger={
+                    <Button variant="wallet" className="gap-2">
+                      <Wallet className="w-4 h-4" />
+                      Settle
+                    </Button>
+                  }
+                />
               </div>
             </div>
           </CardContent>
         </Card>
 
         {/* Quick Actions */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-          <Button variant="outline" className="h-20 flex-col gap-2">
-            <Plus className="w-6 h-6" />
-            <span>Add Expense</span>
-          </Button>
-          <Button variant="outline" className="h-20 flex-col gap-2">
-            <Users className="w-6 h-6" />
-            <span>Create Group</span>
-          </Button>
-          <Button variant="outline" className="h-20 flex-col gap-2">
-            <UserPlus className="w-6 h-6" />
-            <span>Add Friend</span>
-          </Button>
-          <Button variant="outline" className="h-20 flex-col gap-2">
-            <Download className="w-6 h-6" />
-            <span>Export CSV</span>
-          </Button>
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-8">
+          <AddExpenseModal
+            trigger={
+              <Button variant="outline" className="h-20 flex-col gap-2">
+                <Plus className="w-6 h-6" />
+                <span>Add Expense</span>
+              </Button>
+            }
+          />
+          <CreateGroupModal
+            trigger={
+              <Button variant="outline" className="h-20 flex-col gap-2">
+                <Users className="w-6 h-6" />
+                <span>Create Group</span>
+              </Button>
+            }
+          />
+          <AddFriendModal
+            trigger={
+              <Button variant="outline" className="h-20 flex-col gap-2">
+                <UserPlus className="w-6 h-6" />
+                <span>Add Friend</span>
+              </Button>
+            }
+          />
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -145,10 +168,14 @@ export default function Dashboard() {
           <div className="lg:col-span-2">
             <div className="flex items-center justify-between mb-6">
               <h2 className="text-xl font-semibold text-text-100">Your Groups</h2>
-              <Button variant="ghost" className="gap-2">
-                <Plus className="w-4 h-4" />
-                New Group
-              </Button>
+              <CreateGroupModal
+                trigger={
+                  <Button variant="ghost" className="gap-2">
+                    <Plus className="w-4 h-4" />
+                    New Group
+                  </Button>
+                }
+              />
             </div>
             
             <div className="grid gap-4">

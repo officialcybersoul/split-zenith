@@ -8,7 +8,6 @@ import {
   Plus, 
   Users, 
   Settings, 
-  Download, 
   MoreVertical,
   DollarSign,
   Calendar,
@@ -17,6 +16,8 @@ import {
   CreditCard,
   Wallet
 } from 'lucide-react';
+import AddExpenseModal from '@/components/modals/AddExpenseModal';
+import SettleBalanceModal from '@/components/modals/SettleBalanceModal';
 
 export default function GroupDetail() {
   const [selectedTab, setSelectedTab] = useState('expenses');
@@ -84,10 +85,15 @@ export default function GroupDetail() {
               </div>
               
               <div className="flex space-x-3">
-                <Button variant="secondary" className="gap-2">
-                  <Plus className="w-4 h-4" />
-                  Add Expense
-                </Button>
+                <AddExpenseModal
+                  trigger={
+                    <Button variant="secondary" className="gap-2">
+                      <Plus className="w-4 h-4" />
+                      Add Expense
+                    </Button>
+                  }
+                  groupMembers={group.members}
+                />
                 <Button variant="outline" className="gap-2">
                   <Users className="w-4 h-4" />
                   Invite
@@ -133,14 +139,15 @@ export default function GroupDetail() {
                   <CardTitle className="text-white text-lg">Quick Actions</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-2">
-                  <Button variant="wallet" className="w-full gap-2 text-sm">
-                    <Wallet className="w-4 h-4" />
-                    Settle Balance
-                  </Button>
-                  <Button variant="ghost" className="w-full gap-2 text-sm text-white hover:bg-white/10">
-                    <Download className="w-4 h-4" />
-                    Export Data
-                  </Button>
+                  <SettleBalanceModal
+                    trigger={
+                      <Button variant="wallet" className="w-full gap-2 text-sm">
+                        <Wallet className="w-4 h-4" />
+                        Settle Balance
+                      </Button>
+                    }
+                    suggestedAmount={Math.abs(group.yourBalance)}
+                  />
                 </CardContent>
               </Card>
             </div>
@@ -161,10 +168,15 @@ export default function GroupDetail() {
           <TabsContent value="expenses" className="space-y-6">
             <div className="flex items-center justify-between">
               <h2 className="text-xl font-semibold text-text-100">Recent Expenses</h2>
-              <Button variant="default" className="gap-2">
-                <Plus className="w-4 h-4" />
-                Add Expense
-              </Button>
+              <AddExpenseModal
+                trigger={
+                  <Button variant="default" className="gap-2">
+                    <Plus className="w-4 h-4" />
+                    Add Expense
+                  </Button>
+                }
+                groupMembers={group.members}
+              />
             </div>
             
             <div className="space-y-4">
@@ -234,23 +246,29 @@ export default function GroupDetail() {
                           {member.balance >= 0 ? '+' : ''}${member.balance.toFixed(2)}
                         </div>
                         {member.balance !== 0 && (
-                          <Button 
-                            variant={member.balance > 0 ? "default" : "outline"}
-                            size="sm"
-                            className="gap-2"
-                          >
-                            {member.balance > 0 ? (
-                              <>
-                                <ArrowDownLeft className="w-3 h-3" />
-                                Request
-                              </>
-                            ) : (
-                              <>
-                                <ArrowUpRight className="w-3 h-3" />
-                                Pay
-                              </>
-                            )}
-                          </Button>
+                          <SettleBalanceModal
+                            trigger={
+                              <Button 
+                                variant={member.balance > 0 ? "default" : "outline"}
+                                size="sm"
+                                className="gap-2"
+                              >
+                                {member.balance > 0 ? (
+                                  <>
+                                    <ArrowDownLeft className="w-3 h-3" />
+                                    Request
+                                  </>
+                                ) : (
+                                  <>
+                                    <ArrowUpRight className="w-3 h-3" />
+                                    Pay
+                                  </>
+                                )}
+                              </Button>
+                            }
+                            suggestedAmount={Math.abs(member.balance)}
+                            suggestedPerson={member.name}
+                          />
                         )}
                       </div>
                     </div>
