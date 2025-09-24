@@ -47,16 +47,37 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        sidebar: {
-          DEFAULT: "hsl(var(--sidebar-background))",
-          foreground: "hsl(var(--sidebar-foreground))",
-          primary: "hsl(var(--sidebar-primary))",
-          "primary-foreground": "hsl(var(--sidebar-primary-foreground))",
-          accent: "hsl(var(--sidebar-accent))",
-          "accent-foreground": "hsl(var(--sidebar-accent-foreground))",
-          border: "hsl(var(--sidebar-border))",
-          ring: "hsl(var(--sidebar-ring))",
+        // Custom design system colors
+        bg: {
+          100: "hsl(var(--bg-100))",
+          200: "hsl(var(--bg-200))",
         },
+        surface: {
+          100: "hsl(var(--surface-100))",
+          200: "hsl(var(--surface-200))",
+        },
+        text: {
+          100: "hsl(var(--text-100))",
+          200: "hsl(var(--text-200))",
+        },
+        muted: {
+          300: "hsl(var(--muted-300))",
+        },
+        glass: {
+          "01": "hsl(var(--glass-01))",
+          "02": "hsl(var(--glass-02))",
+        },
+        gradient: {
+          "1-from": "hsl(var(--accent-grad-1-from))",
+          "1-to": "hsl(var(--accent-grad-1-to))",
+          "2-from": "hsl(var(--accent-grad-2-from))",
+          "2-to": "hsl(var(--accent-grad-2-to))",
+          "3-from": "hsl(var(--accent-grad-3-from))",
+          "3-to": "hsl(var(--accent-grad-3-to))",
+        },
+        danger: "hsl(var(--danger))",
+        success: "hsl(var(--success))",
+        warning: "hsl(var(--warning))",
       },
       borderRadius: {
         lg: "var(--radius)",

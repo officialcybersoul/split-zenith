@@ -2,95 +2,84 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Web3 Splitwise Design System - Dark Theme with Crypto Gradients */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Roboto+Mono:wght@400;500;600&display=swap');
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
-
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-
-    --radius: 0.5rem;
-
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
-
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* Core backgrounds */
+    --bg-100: 220 16% 2%;
+    --bg-200: 217 19% 4%;
+    
+    /* Surface colors */
+    --surface-100: 215 20% 6%;
+    --surface-200: 213 18% 8%;
+    
+    /* Text colors */
+    --text-100: 207 23% 92%;
+    --text-200: 210 20% 80%;
+    --muted-300: 211 15% 65%;
+    
+    /* Glass effects */
+    --glass-01: 0 0% 100% / 0.03;
+    --glass-02: 0 0% 100% / 0.02;
+    
+    /* Gradient accent colors */
+    --accent-grad-1-from: 195 100% 50%;
+    --accent-grad-1-to: 231 77% 65%;
+    
+    --accent-grad-2-from: 340 82% 71%;
+    --accent-grad-2-to: 32 95% 71%;
+    
+    --accent-grad-3-from: 142 71% 65%;
+    --accent-grad-3-to: 175 64% 39%;
+    
+    /* Status colors */
+    --danger: 0 85% 70%;
+    --success: 158 64% 52%;
+    --warning: 43 96% 56%;
+    
+    /* Elevation */
+    --elev-1: 0 6px 20px hsl(218 25% 3% / 0.6);
+    --elev-2: 0 10px 32px hsl(218 25% 3% / 0.7);
+    
+    /* Radius */
+    --r-sm: 8px;
+    --r-md: 12px;
+    --r-lg: 20px;
+    --r-pill: 999px;
+    
+    /* Standard shadcn/ui tokens (adapted to dark theme) */
+    --background: var(--bg-100);
+    --foreground: var(--text-100);
+    
+    --card: var(--surface-100);
+    --card-foreground: var(--text-100);
+    
+    --popover: var(--surface-200);
+    --popover-foreground: var(--text-100);
+    
+    --primary: var(--accent-grad-1-from);
+    --primary-foreground: var(--bg-100);
+    
+    --secondary: var(--surface-200);
+    --secondary-foreground: var(--text-100);
+    
+    --muted: var(--surface-100);
+    --muted-foreground: var(--muted-300);
+    
+    --accent: var(--surface-200);
+    --accent-foreground: var(--text-100);
+    
+    --destructive: var(--danger);
+    --destructive-foreground: var(--text-100);
+    
+    --border: var(--surface-200);
+    --input: var(--surface-200);
+    --ring: var(--accent-grad-1-from);
+    
+    --radius: var(--r-md);
   }
 }
 
@@ -101,5 +90,90 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+  
+  /* Numeric/monospace for amounts */
+  .numeric {
+    font-family: 'Roboto Mono', 'SF Mono', 'Monaco', 'Inconsolata', monospace;
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+@layer components {
+  /* Button variants */
+  .btn-primary {
+    @apply relative overflow-hidden bg-gradient-to-r from-[hsl(var(--accent-grad-1-from))] to-[hsl(var(--accent-grad-1-to))] text-[hsl(var(--bg-100))] font-semibold rounded-lg px-6 py-3 transition-all duration-200 hover:shadow-lg hover:shadow-[hsl(var(--accent-grad-1-from))]/25 hover:-translate-y-0.5 active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  
+  .btn-secondary {
+    @apply relative bg-[hsl(var(--surface-200))] border border-[hsl(var(--glass-01))] text-[hsl(var(--text-100))] font-semibold rounded-lg px-6 py-3 transition-all duration-200 hover:bg-[hsl(var(--surface-100))] hover:border-[hsl(var(--accent-grad-1-from))]/20 hover:-translate-y-0.5;
+  }
+  
+  .btn-ghost {
+    @apply text-[hsl(var(--muted-300))] font-medium rounded-lg px-4 py-2 transition-all duration-200 hover:text-[hsl(var(--text-100))] hover:bg-[hsl(var(--surface-100))];
+  }
+  
+  .btn-danger {
+    @apply bg-gradient-to-r from-[hsl(var(--danger))] to-[hsl(var(--danger))] text-white font-semibold rounded-lg px-6 py-3 transition-all duration-200 hover:shadow-lg hover:shadow-[hsl(var(--danger))]/25 hover:-translate-y-0.5;
+  }
+  
+  /* Glass card effect */
+  .glass-card {
+    @apply bg-[hsl(var(--glass-01))] backdrop-blur-sm border border-[hsl(var(--glass-02))] rounded-[var(--r-lg)] shadow-[var(--elev-1)];
+  }
+  
+  /* Gradient backgrounds */
+  .gradient-1 {
+    background: linear-gradient(135deg, hsl(var(--accent-grad-1-from)), hsl(var(--accent-grad-1-to)));
+  }
+  
+  .gradient-2 {
+    background: linear-gradient(135deg, hsl(var(--accent-grad-2-from)), hsl(var(--accent-grad-2-to)));
+  }
+  
+  .gradient-3 {
+    background: linear-gradient(135deg, hsl(var(--accent-grad-3-from)), hsl(var(--accent-grad-3-to)));
+  }
+  
+  /* Focus styles */
+  .focus-ring {
+    @apply focus:outline-none focus:ring-2 focus:ring-[hsl(var(--accent-grad-1-from))] focus:ring-offset-2 focus:ring-offset-[hsl(var(--bg-100))];
+  }
+  
+  /* Animations */
+  .animate-pulse-soft {
+    animation: pulse-soft 2s ease-in-out infinite;
+  }
+  
+  @keyframes pulse-soft {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+  }
+  
+  .animate-scale {
+    transition: transform 200ms ease-out;
+  }
+  
+  .animate-scale:hover {
+    transform: scale(1.02);
+  }
+  
+  /* Amount styles */
+  .amount-positive {
+    @apply text-[hsl(var(--success))] numeric;
+  }
+  
+  .amount-negative {
+    @apply text-[hsl(var(--danger))] numeric;
+  }
+  
+  .amount-neutral {
+    @apply text-[hsl(var(--muted-300))] numeric;
+  }
+  
+  /* Wallet button */
+  .btn-wallet {
+    @apply relative overflow-hidden bg-gradient-to-r from-[hsl(var(--accent-grad-3-from))] to-[hsl(var(--accent-grad-3-to))] text-[hsl(var(--bg-100))] font-semibold rounded-lg px-6 py-3 transition-all duration-200 hover:shadow-lg hover:shadow-[hsl(var(--accent-grad-3-from))]/25 hover:-translate-y-0.5;
   }
 }
